@@ -5,7 +5,7 @@ function App() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <h1>Bienvenida a Radio AM 🎶</h1>
+        <h1> Radio AM </h1>
       </main>
     </div>
   );
