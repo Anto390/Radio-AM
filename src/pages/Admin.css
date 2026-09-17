@@ -1,0 +1,24 @@
+.admin-section { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+.admin-section h1 { margin-bottom: 8px; }
+.admin-section p { color: #bbb; margin-bottom: 25px; }
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.admin-card {
+  background: #262626;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.admin-card h2 { font-size: 1.15rem; margin-bottom: 6px; color: #f97316; }
+.admin-card p { color: #bbb; font-size: 0.9rem; margin: 0; }
+
+/* Celular */
+@media (max-width: 480px) {
+  .admin-section { padding: 25px 15px; }
+  .admin-grid { grid-template-columns: 1fr; }
+}

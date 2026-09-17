@@ -1,25 +1,28 @@
-// src/components/Header.tsx
-import React from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../auth/AuthContext";
+import logo from "../assets/logo-escuela.jpg";
+import "./Header.css";
 
-const Header: React.FC = () => {
+export default function Header() {
+  const { usuario, logout } = useAuth();
+
   return (
-    <header className="w-full bg-gray-900 text-white flex items-center justify-between px-6 py-4">
-      {/* Logo */}
-      <div className="flex items-center">
-        <img
-          src="/logo.png" // poné tu logo en la carpeta /public
-          alt="Logo TecNM"
-          className="w-12 h-12 rounded-full mr-3"
-        />
-        <span className="text-xl font-semibold">TecNM</span>
-      </div>
+    <header className="site-header">
+      <div className="header-inner">
+        <Link to="/" className="logo">
+          <img src={logo} alt="Logo E.S.E.T.P N°724" />
+        </Link>
 
-      {/* Botón ingresar */}
-      <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2 rounded">
-        ingresar
-      </button>
+        {usuario ? (
+          <button className="btn-ingresar" onClick={logout}>
+            Cerrar sesión
+          </button>
+        ) : (
+          <Link to="/login" className="btn-ingresar">
+            Ingresar
+          </Link>
+        )}
+      </div>
     </header>
   );
-};
-
-export default Header;
+}

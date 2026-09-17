@@ -1,14 +1,28 @@
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Admin from "./pages/Admin";
+import RutaProtegida from "./auth/RutaProtegida";
 
-function App() {
+export default function App() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
       <Header />
-      <main className="flex-grow">
-        <h1> Radio AM </h1>
-      </main>
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/admin"
+          element={
+            <RutaProtegida>
+              <Admin />
+            </RutaProtegida>
+          }
+        />
+      </Routes>
+      <Footer />
+    </>
   );
 }
-
-export default App;
