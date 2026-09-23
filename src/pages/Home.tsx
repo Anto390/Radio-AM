@@ -1,12 +1,29 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import logoRadio from "../assets/logo-radio.jpeg";
 import illi from "../assets/Mascota-ILLI.png";
+import fondoEscuela from "../assets/fondo-escuela.png";
+import { estaEnVivo } from "../EnVivo";
 import "./Home.css";
 
 export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [sonando, setSonando] = useState(false);
   const [volumen, setVolumen] = useState(0.8);
+  const [enVivo, setEnVivo] = useState(estaEnVivo());
+
+  useEffect(() => {
+    const actualizar = () => setEnVivo(estaEnVivo());
+
+    // Se dispara cuando cambia en OTRA pestaña
+    window.addEventListener("storage", actualizar);
+    // Se dispara cuando cambia en ESTA misma pestaña (evento propio)
+    window.addEventListener("cambioEnVivo", actualizar);
+
+    return () => {
+      window.removeEventListener("storage", actualizar);
+      window.removeEventListener("cambioEnVivo", actualizar);
+    };
+  }, []);
 
   const reproducir = () => {
     audioRef.current?.play();
@@ -26,8 +43,8 @@ export default function Home() {
   };
 
   return (
-    <section className="home">
-      <span className="live">● LIVE</span>
+    <section className="home" style={{ backgroundImage: `url(${fondoEscuela})` }}>
+      {enVivo && <span className="live">● LIVE</span>}
 
       <div className="home-contenido">
         <div className="home-info">
@@ -52,7 +69,7 @@ export default function Home() {
           </div>
         </div>
 
-        <img src={illi} alt="Radio_AM/src/assets/Mascota-ILLI.png" className="mascota" />
+        <img src={illi} alt="Illi, la mascota del taller" className="mascota" />
       </div>
 
       <audio ref={audioRef} src="https://TU-STREAM-AQUI/stream" preload="none" />

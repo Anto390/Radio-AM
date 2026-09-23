@@ -1,6 +1,6 @@
 .login-section {
   min-height: 70vh;
- background-image: url("Radio_AM/src/assets/fondo-escuela.png");
+  background-image: url("../assets/fondo-escuela.png");
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;

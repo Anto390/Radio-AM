@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
-
 interface Usuario {
   usuario: string;
   rol: "admin";
@@ -16,39 +15,36 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Credenciales temporales mientras no hay backend.
+// TODO: reemplazar por validación real en un servidor cuando esté listo.
+const USUARIO_ADMIN = "admin@gmail.com";
+const CLAVE_ADMIN = "admin123";
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [usuario, setUsuario] = useState<Usuario | null>(null);
   const [cargando, setCargando] = useState(true);
 
-  // Al cargar la app se le pregunta al servidor si hay sesión activa
   useEffect(() => {
-    fetch("/api/sesion", { credentials: "include" })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data: Usuario | null) => setUsuario(data))
-      .catch(() => setUsuario(null))
-      .finally(() => setCargando(false));
+    const guardado = sessionStorage.getItem("sesionAdmin");
+    if (guardado) {
+      setUsuario(JSON.parse(guardado));
+    }
+    setCargando(false);
   }, []);
 
   const login = async (user: string, clave: string): Promise<boolean> => {
-    try {
-      const res = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ usuario: user, clave }),
-      });
-      if (!res.ok) return false;
-      const data: Usuario = await res.json();
-      setUsuario(data);
+    if (user === USUARIO_ADMIN && clave === CLAVE_ADMIN) {
+      const sesion: Usuario = { usuario: user, rol: "admin" };
+      setUsuario(sesion);
+      sessionStorage.setItem("sesionAdmin", JSON.stringify(sesion));
       return true;
-    } catch {
-      return false;
     }
+    return false;
   };
 
   const logout = () => {
-    fetch("/api/logout", { method: "POST", credentials: "include" })
-      .finally(() => setUsuario(null));
+    setUsuario(null);
+    sessionStorage.removeItem("sesionAdmin");
   };
 
   return (

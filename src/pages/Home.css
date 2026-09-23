@@ -1,7 +1,7 @@
 .home {
   position: relative;
   min-height: 65vh;
-  background-image: url("Radio_AM/src/assets/fondo-escuela.png");
+  background-image: url("../assets/fondo-escuela.png");
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
@@ -14,7 +14,7 @@
   color: #fff;
   font-weight: 700;
   padding: 6px 14px;
-  border-radius: 6px;
+  border-radius: 30px;
   font-size: 0.9rem;
   display: inline-block;
 }
@@ -28,17 +28,17 @@
   margin-top: 30px;
 }
 
-.home-info h2 { color: #fff; font-size: 1.6rem; margin-bottom: 15px; text-align: center; }
+.home-info h2 { color: #000000; font-size: 1.6rem; margin-bottom: 15px; text-align: center; }
 
 .proxima {
   display: flex;
   justify-content: space-between;
   gap: 40px;
   background: rgba(255,255,255,0.15);
-  border: 2px solid #fff;
+  border: 2px solid #000000;
   border-radius: 30px;
   padding: 12px 25px;
-  color: #fff;
+  color: #000000;
 }
 
 .reproductor { text-align: center; }

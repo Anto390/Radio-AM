@@ -1,15 +1,162 @@
-.admin-section { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-.admin-section h1 { margin-bottom: 8px; }
-.admin-section p { color: #bbb; margin-bottom: 25px; }
+.admin-section {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  padding: 40px 20px;
+}
+
+.admin-overlay {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.admin-overlay h1 { margin-bottom: 8px; color: #fff; }
+.admin-overlay p { color: #bbb; margin-bottom: 25px; }
+
+/* ---- Botones de acciones (agregar canción / en vivo) ---- */
+
+.admin-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.btn-admin {
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-admin:active { transform: scale(0.97); }
+
+.btn-admin:not(.btn-vivo):not(.btn-finalizar):not(.btn-guardar) {
+  background: #2563eb;
+  color: #fff;
+}
+.btn-admin:not(.btn-vivo):not(.btn-finalizar):not(.btn-guardar):hover {
+  background: #1d4ed8;
+}
+
+.btn-vivo {
+  background: #16a34a;
+  color: #fff;
+}
+.btn-vivo:hover { background: #15803d; }
+
+.btn-finalizar {
+  background: #e11d48;
+  color: #fff;
+}
+.btn-finalizar:hover { background: #be123c; }
+
+.badge-en-vivo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #e11d48;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 10px 18px;
+  border-radius: 10px;
+  animation: pulso 1.5s infinite;
+}
+
+@keyframes pulso {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(225, 29, 72, 0); }
+}
+
+.btn-guardar {
+  background: #111;
+  color: #fff;
+  align-self: flex-start;
+}
+.btn-guardar:hover { background: #333; }
+
+/* ---- Formulario de canción ---- */
+
+.form-cancion {
+  background: #262626;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 400px;
+}
+
+.campo { display: flex; flex-direction: column; gap: 6px; }
+.campo label { font-size: 0.85rem; color: #bbb; font-weight: 600; }
+
+.campo input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+}
+.campo input:focus { border-color: #2563eb; }
+
+/* ---- Lista de canciones ---- */
+
+.lista-canciones {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.lista-canciones li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #1e1e1e;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+.btn-eliminar {
+  background: #7f1d1d;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.btn-eliminar:hover { background: #991b1b; }
+
+/* ---- Tarjetas informativas ---- */
 
 .admin-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 18px;
+  max-width: 700px;
 }
 
 .admin-card {
-  background: #262626;
+  background: rgba(38, 38, 38, 0.9);
   border-radius: 10px;
   padding: 20px;
 }
@@ -17,8 +164,14 @@
 .admin-card h2 { font-size: 1.15rem; margin-bottom: 6px; color: #f97316; }
 .admin-card p { color: #bbb; font-size: 0.9rem; margin: 0; }
 
-/* Celular */
+/* ---- Tablet ---- */
+@media (max-width: 768px) {
+  .admin-overlay { padding: 20px; }
+}
+
+/* ---- Celular ---- */
 @media (max-width: 480px) {
-  .admin-section { padding: 25px 15px; }
+  .admin-section { padding: 20px 10px; }
+  .admin-overlay { padding: 18px; border-radius: 12px; }
   .admin-grid { grid-template-columns: 1fr; }
 }
