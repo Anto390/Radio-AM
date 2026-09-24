@@ -35,13 +35,12 @@ export default function Admin() {
     setAutorCancion("");
     setMostrarFormCancion(false);
 
-    // Más adelante, cuando haya backend:
   };
 
   const eliminarCancion = (id: number) => {
     setCanciones((prev) => prev.filter((c) => c.id !== id));
 
-    // Más adelante, cuando haya backend:
+
   };
 
   // wn Vivo
@@ -61,14 +60,15 @@ export default function Admin() {
     <section className="admin-section" style={{ backgroundImage: `url(${fondoEscuela})` }}>
       <div className="admin-overlay">
         <h1>Panel de administración</h1>
+        <p>Bienvenido, {usuario?.usuario}.</p>
 
         <div className="admin-acciones">
-          {/* ---- Botón agregar canción ---- */}
+          {/* Botón agregar canción  */}
           <button className="btn-admin" onClick={() => setMostrarFormCancion((v) => !v)}>
             {mostrarFormCancion ? "Cancelar" : "Agregar canción"}
           </button>
 
-          {/* ---- Botones de transmisión en vivo ---- */}
+          {/* Botones de transmisión en vivo  */}
           {!enVivo ? (
             <button className="btn-admin btn-vivo" onClick={iniciarVivo}>
               Iniciar transmisión en vivo

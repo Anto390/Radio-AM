@@ -15,8 +15,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Credenciales temporales mientras no hay backend.
-// TODO: reemplazar por validación real en un servidor cuando esté listo.
+
 const USUARIO_ADMIN = "admin@gmail.com";
 const CLAVE_ADMIN = "admin123";
 

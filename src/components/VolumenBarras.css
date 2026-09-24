@@ -7,7 +7,7 @@
 .volumen {
   display: flex;
   align-items: flex-end;
-  gap: 4px;
+  gap: 2px;
   height: 16px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
