@@ -14,7 +14,7 @@ interface Cancion {
 export default function Admin() {
   const { usuario } = useAuth();
 
-  // ----- Estado: canciones -----
+  //  canciones 
   const [canciones, setCanciones] = useState<Cancion[]>([]);
   const [mostrarFormCancion, setMostrarFormCancion] = useState(false);
   const [nombreCancion, setNombreCancion] = useState("");
@@ -36,17 +36,15 @@ export default function Admin() {
     setMostrarFormCancion(false);
 
     // Más adelante, cuando haya backend:
-    // fetch("/api/canciones", { method: "POST", body: JSON.stringify(nueva) })
   };
 
   const eliminarCancion = (id: number) => {
     setCanciones((prev) => prev.filter((c) => c.id !== id));
 
     // Más adelante, cuando haya backend:
-    // fetch(`/api/canciones/${id}`, { method: "DELETE" })
   };
 
-  // ----- Estado: en vivo (compartido con la Home vía localStorage) -----
+  // wn Vivo
   const [enVivo, setEnVivo] = useState(estaEnVivo());
 
   const iniciarVivo = () => {
@@ -63,7 +61,6 @@ export default function Admin() {
     <section className="admin-section" style={{ backgroundImage: `url(${fondoEscuela})` }}>
       <div className="admin-overlay">
         <h1>Panel de administración</h1>
-        <p>Bienvenido, {usuario?.usuario}.</p>
 
         <div className="admin-acciones">
           {/* ---- Botón agregar canción ---- */}
@@ -81,7 +78,7 @@ export default function Admin() {
               <span className="badge-en-vivo">● EN VIVO</span>
               <button className="btn-admin btn-finalizar" onClick={finalizarVivo}>
                 Finalizar transmisión
-              </button>
+              </button>s
             </>
           )}
         </div>

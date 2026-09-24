@@ -3,20 +3,19 @@ import logoRadio from "../assets/logo-radio.jpeg";
 import illi from "../assets/Mascota-ILLI.png";
 import fondoEscuela from "../assets/fondo-escuela.png";
 import { estaEnVivo } from "../EnVivo";
+import VolumenBarras from "../components/VolumenBarras";
 import "./Home.css";
 
 export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [sonando, setSonando] = useState(false);
-  const [volumen, setVolumen] = useState(0.8);
+  const [volumen, setVolumen] = useState(1);
   const [enVivo, setEnVivo] = useState(estaEnVivo());
 
   useEffect(() => {
     const actualizar = () => setEnVivo(estaEnVivo());
 
-    // Se dispara cuando cambia en OTRA pestaña
     window.addEventListener("storage", actualizar);
-    // Se dispara cuando cambia en ESTA misma pestaña (evento propio)
     window.addEventListener("cambioEnVivo", actualizar);
 
     return () => {
@@ -61,11 +60,7 @@ export default function Home() {
             <button onClick={reproducir} aria-label="Reproducir" className="play">
               {sonando ? "❚❚" : "▶"}
             </button>
-            <input
-              type="range" min={0} max={1} step={0.05}
-              value={volumen}
-              onChange={(e) => cambiarVolumen(Number(e.target.value))}
-            />
+            <VolumenBarras volumen={volumen} onChange={cambiarVolumen} />
           </div>
         </div>
 

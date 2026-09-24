@@ -109,3 +109,42 @@
     background-attachment: scroll; /* evita bugs de "fixed" en iOS */
   }
 }
+
+.contenedor-volumen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.volumen {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 60px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.barra {
+  width: 12px;
+  border-radius: 4px;
+  background: #3a3a42;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.barra:hover { transform: scaleY(1.04); }
+
+.barra[data-nivel="1"] { height: 20%; }
+.barra[data-nivel="2"] { height: 40%; }
+.barra[data-nivel="3"] { height: 60%; }
+.barra[data-nivel="4"] { height: 80%; }
+.barra[data-nivel="5"] { height: 100%; }
+
+.barra.activa { background: #ffffff; }
+
+.etiqueta {
+  margin-top: 6px;
+  color: #ccc;
+  text-align: center;
+  font-size: 11px;
+}
