@@ -18,12 +18,6 @@ export default function Footer() {
         <a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a>
         <a href="https://sitio-institucional.com" target="_blank" rel="noreferrer">Sitio institucional</a>
       </div>
-
-      <div className="footer-col">
-        <h3 className="rojo">Categorías</h3>
-        <Link to="/">Inicio</Link>
-
-      </div>
     </footer>
   );
 }
