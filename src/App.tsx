@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import RutaProtegida from "./auth/RutaProtegida";
+import IlliMascota from "./components/IlliMascota";
+import BotonIngresar from "./components/BotonIngresar";
 
 export default function App() {
   return (
@@ -22,6 +24,10 @@ export default function App() {
           }
         />
       </Routes>
+
+      <IlliMascota />
+      <BotonIngresar />
+
       <Footer />
     </>
   );

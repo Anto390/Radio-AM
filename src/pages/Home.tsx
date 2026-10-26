@@ -1,10 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import logoRadio from "../assets/logo-radio.jpeg";
-import illi from "../assets/Mascota-ILLI.png";
+import illiVideo from "../assets/Illi-saludando.mp4";
 import fondoEscuela from "../assets/fondo-escuela.png";
 import { estaEnVivo } from "../EnVivo";
 import VolumenBarras from "../components/VolumenBarras";
+import Programacion from "../components/Programacion";
 import "./Home.css";
+
+const programas = [
+  { id: 1, nombre: "Podcast", hora: "10:00" },
+  { id: 2, nombre: "Podcast", hora: "11:00" },
+  { id: 3, nombre: "Podcast", hora: "12:00" },
+];
 
 export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -46,10 +53,7 @@ export default function Home() {
       {enVivo && <span className="live">● LIVE</span>}
 
       <div className="home-contenido">
-        <div className="home-info">
-          <h2>Siguiente Programación</h2>
-          <div className="proxima"><span>Podcast</span><span>Hora</span></div>
-        </div>
+        <Programacion programas={programas} />
 
         <div className="reproductor">
           <img src={logoRadio} alt="Taller de Radio" className="caratula" />
@@ -64,7 +68,15 @@ export default function Home() {
           </div>
         </div>
 
-        <img src={illi} alt="Illi, la mascota del taller" className="mascota" />
+        <video
+          className="mascota"
+          src={illiVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-label="Illi, la mascota del taller, saludando"
+        />
       </div>
 
       <audio ref={audioRef} src="https://TU-STREAM-AQUI/stream" preload="none" />

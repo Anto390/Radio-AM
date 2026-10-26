@@ -1,0 +1,73 @@
+.programacion {
+  width: 100%;
+  max-width: 320px;
+}
+
+.programacion-titulo {
+  color: #111;
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+}
+
+.programacion-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+}
+
+.programa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(30, 30, 30, 0.85);
+  border-left: 4px solid #6b6b6b;
+  border-radius: 12px;
+  color: #fff;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.programa:hover {
+  transform: translateX(4px);
+  background: rgba(30, 30, 30, 0.95);
+}
+
+.programa-nombre {
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.programa-hora {
+  flex-shrink: 0;
+  background: #3a3a3a;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.programa.proximo {
+  border-left-color: #f97316;
+}
+
+.programa.proximo .programa-hora {
+  background: #f97316;
+  color: #111;
+}
+
+@media (max-width: 600px) {
+  .programacion { max-width: 100%; }
+  .programacion-titulo { font-size: 1.3rem; }
+}

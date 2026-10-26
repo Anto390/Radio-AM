@@ -117,13 +117,7 @@ export default function Admin() {
             {canciones.map((c) => (
               <li key={c.id}>
                 <span><strong>{c.nombre}</strong>{c.autor && ` — ${c.autor}`}</span>
-                <button
-                  className="btn-eliminar"
-                  onClick={() => eliminarCancion(c.id)}
-                  aria-label={`Eliminar ${c.nombre}`}
-                >
-                  Eliminar
-                </button>
+                <button className="btn-eliminar" onClick={() => eliminarCancion(c.id)} aria-label={`Eliminar ${c.nombre}`}> Eliminar </button>
               </li>
             ))}
           </ul>
